@@ -19,14 +19,32 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'DNI';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
+        /* 'name',
         'email',
+        'password', */
+        'DNI',
         'password',
+        'apellidoPaterno',
+        'apellidoMaterno',
+        'nombres',
+        'fechaNacimiento',
+        'sexo',
+        'telefono',
+        'celular',
+        'email',
+        'direccion'
     ];
 
     /**
@@ -37,8 +55,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+        /* 'two_factor_recovery_codes',
+        'two_factor_secret', */
     ];
 
     /**
@@ -56,6 +74,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        /* 'profile_photo_url', */
     ];
 }

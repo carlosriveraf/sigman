@@ -25,19 +25,19 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         }); */
         Schema::create('users', function (Blueprint $table) {
-            $table->string('DNI', 8)->collation('utf8mb4_unicode_ci');
-            $table->string('password')->collation('utf8mb4_unicode_ci');
+            $table->string('DNI', 8);
+            $table->string('password');
             $table->rememberToken();
-            $table->string('apellidoPaterno', 30)->collation('utf8mb4_unicode_ci');
-            $table->string('apellidoMaterno', 30)->collation('utf8mb4_unicode_ci');
+            $table->string('apellidoPaterno', 30);
+            $table->string('apellidoMaterno', 30);
             $table->string('nombres', 40);
             $table->date('fechaNacimiento');
-            $table->char('sexo', 1)->collation('utf8mb4_unicode_ci');
-            $table->string('telefono', 7)->collation('utf8mb4_unicode_ci');
-            $table->string('celular', 9)->collation('utf8mb4_unicode_ci');
-            $table->string('email')->collation('utf8mb4_unicode_ci');
+            $table->char('sexo', 1);
+            $table->string('telefono', 7);
+            $table->string('celular', 9);
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('direccion')->collation('utf8mb4_unicode_ci');
+            $table->string('direccion');
             $table->timestamps();
 
             $table->primary('DNI');
