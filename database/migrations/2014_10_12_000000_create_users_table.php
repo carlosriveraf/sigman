@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        /* Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -23,6 +23,24 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();
+        }); */
+        Schema::create('users', function (Blueprint $table) {
+            $table->string('DNI', 8)->collation('utf8mb4_unicode_ci');
+            $table->string('password')->collation('utf8mb4_unicode_ci');
+            $table->rememberToken();
+            $table->string('apellidoPaterno', 30)->collation('utf8mb4_unicode_ci');
+            $table->string('apellidoMaterno', 30)->collation('utf8mb4_unicode_ci');
+            $table->string('nombres', 40);
+            $table->date('fechaNacimiento');
+            $table->char('sexo', 1)->collation('utf8mb4_unicode_ci');
+            $table->string('telefono', 7)->collation('utf8mb4_unicode_ci');
+            $table->string('celular', 9)->collation('utf8mb4_unicode_ci');
+            $table->string('email')->collation('utf8mb4_unicode_ci');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('direccion')->collation('utf8mb4_unicode_ci');
+            $table->timestamps();
+
+            $table->primary('DNI');
         });
     }
 
