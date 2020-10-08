@@ -12,6 +12,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.27.0/feather.min.js" crossorigin="anonymous"></script>
 @endsection
 
+@section('sidenav-menu')
+    @include('administrador.nav')
+@endsection
+
+@section('main')
+<main>
+    <header class="page-header page-header-compact page-header-dark border-bottom bg-white bg-gradient-primary-to-secondary mb-4">
+    <!-- <header class="page-header page-header-compact page-header-dark border-bottom bg-white bg-gradient-primary-to-secondary mb-4"> -->
+    <!-- <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4"> -->
+        <!-- bg-gradient-primary-to-secondary -->
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="file"></i></div>
+                            Blank Starter (Minimal)
+                        </h1>
+                    </div>
+                    <div class="col-12 col-xl-auto mb-3">Optional page header content</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">Example Card</div>
+            <div class="card-body">This is a blank page. You can use this page as a boilerplate for creating new pages! This page uses the compact page header format, which allows you to create pages with a very minimal and slim page header so you can get right to showcasing your content.</div>
+        </div>
+    </div>
+</main>
+@endsection
+
 @section('scripts')
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
