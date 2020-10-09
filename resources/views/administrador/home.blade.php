@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 
 @section('head')
+
+    <title>Inicio</title>
+
     <!-- Bootstrap CSS CDN -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
 
@@ -19,9 +22,6 @@
 @section('main')
 <main>
     <header class="page-header page-header-compact page-header-dark border-bottom bg-white bg-gradient-primary-to-secondary mb-4">
-    <!-- <header class="page-header page-header-compact page-header-dark border-bottom bg-white bg-gradient-primary-to-secondary mb-4"> -->
-    <!-- <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4"> -->
-        <!-- bg-gradient-primary-to-secondary -->
         <div class="container-fluid">
             <div class="page-header-content">
                 <div class="row align-items-center justify-content-between pt-3">
@@ -37,7 +37,7 @@
         </div>
     </header>
     <!-- Main page content-->
-    <div class="container mt-4">
+    <div class="container-fluid mt-4">
         <div class="card">
             <div class="card-header">Example Card</div>
             <div class="card-body">This is a blank page. You can use this page as a boilerplate for creating new pages! This page uses the compact page header format, which allows you to create pages with a very minimal and slim page header so you can get right to showcasing your content.</div>

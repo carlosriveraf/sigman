@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeccionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/test', function() {
     return view('administrador.home');
 });
+
+Route::resource('salon', SeccionController::class);

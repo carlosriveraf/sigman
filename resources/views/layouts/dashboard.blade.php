@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
 
     @yield('head')
 
@@ -15,22 +14,6 @@
             <i data-feather="menu"></i>
         </button>
         <ul class="navbar-nav align-items-center ml-auto">
-            
-            <li class="nav-item dropdown no-caret mr-3 d-md-none">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
-                <!-- Dropdown - Search-->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
-                    <form class="form-inline mr-auto w-100">
-                        <div class="input-group input-group-joined input-group-solid">
-                            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                            <div class="input-group-append">
-                                <div class="input-group-text"><i data-feather="search"></i></div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </li>
-            
             <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
@@ -61,8 +44,8 @@
                     <h6 class="dropdown-header d-flex align-items-center">
                         <img class="dropdown-user-img" src="https://source.unsplash.com/QAB-WJcbgJk/60x60" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name">Valerie Luna</div>
-                            <div class="dropdown-user-details-email">vluna@aol.com</div>
+                            <div class="dropdown-user-details-name">{{ Auth::user()->apellidoPaterno." ".Auth::user()->apellidoMaterno }}</div>
+                            <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
@@ -70,10 +53,13 @@
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         Configuración
                     </a>
-                    <a class="dropdown-item" href="#!">
-                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Cerrar sesión
-                    </a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();this.closest('form').submit();">
+                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                            Cerrar sesión
+                        </a>
+                    </form>
                 </div>
             </li>
         </ul>
