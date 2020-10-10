@@ -62,49 +62,93 @@
                             <tr>
                                 <th>Nivel</th>
                                 <th>Salones</th>
-                                <th>Acciones</th>
+                                <th>Agregar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($salones as $salon)
                                 <tr>
                                     <td>{{ $salon->nombre }}</td>
-                                    <td><div class="badge badge-primary badge-pill">Full-time</div></td>
                                     <td>
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
+                                        @foreach($secciones as $seccion)
+                                            @if($seccion->nivel == $salon->nivel)
+                                                {{ $seccion->letra }}
+                                                @php
+                                                    $lastLetter = $seccion->letra;
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('salon.store') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="nivel" value="{{ $salon->nivel }}">
+                                            <input type="hidden" name="lastLetter" value="{{ $lastLetter }}">
+                                            <button class="btn btn-success btn-sm">
+                                                <i class="fas fa-plus"></i>
+                                                &nbsp;&nbsp;Agregar sección
+                                            </button>
+                                        </form>
+                                        <!-- <form action="" method="post">
+                                            @csrf
+                                            <button class="btn btn-warning btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                                &nbsp;&nbsp;Eliminar sección
+                                            </button>
+                                        </form> -->
+                                        
+                                        <!-- <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button> -->
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('salon.destroy', ['salon' => $salon->nivel]) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-warning btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                                &nbsp;&nbsp;Eliminar sección
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
+                            <!-- <tr>
                                 <td>Michael Silva</td>
                                 <td><div class="badge badge-primary badge-pill">Full-time</div></td>
                                 <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
+                                    <button class="btn btn-success btn-sm">
+                                        <i class="fas fa-plus"></i>
+                                        &nbsp;&nbsp;Agregar sección
+                                    </button>
+                                    <button class="btn btn-warning btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                        &nbsp;&nbsp;Eliminar sección
+                                    </button>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Paul Byrd</td>
-                                <td><div class="badge badge-primary badge-pill">Full-time</div></td>
-                                <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Donna Snider</td>
-                                <td><div class="badge badge-secondary badge-pill">Part-time</div></td>
-                                <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
     </div>
 </main>
 @endsection
@@ -128,4 +172,6 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+
+    <!-- <script src="{{ asset('assets/demo/datatables-demo.js') }}"></script> -->
 @endsection

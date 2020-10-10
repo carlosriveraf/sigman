@@ -29,4 +29,11 @@ class Seccion extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }
