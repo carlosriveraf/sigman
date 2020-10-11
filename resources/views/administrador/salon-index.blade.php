@@ -71,6 +71,9 @@
                                 <tr>
                                     <td>{{ $salon->nombre }}</td>
                                     <td>
+                                        @php
+                                            $lastLetter = "error";
+                                        @endphp
                                         @foreach($secciones as $seccion)
                                             @if($seccion->nivel == $salon->nivel)
                                                 {{ $seccion->letra }}

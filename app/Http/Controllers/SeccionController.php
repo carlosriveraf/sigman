@@ -43,12 +43,38 @@ class SeccionController extends Controller
      */
     public function store(Request $request)
     {
+        $secciones = Seccion::where('nivel', $request->nivel)->get();
         $seccion = new Seccion;
+        $seccion->nivel = $request->nivel;
+
+        if ($request->lastLetter == "error" || $secciones->count() <= 0) {
+            /* $seccion = new Seccion;
+            $seccion->nivel = $request->nivel; */
+            $seccion->letra = 'A';
+            $seccion->save();
+        } else {
+            if ((ord($request->lastLetter) + 1) <= 90) {
+                /* $seccion = new Seccion;
+                $seccion->nivel = $request->nivel; */
+                $nextLetter = chr(ord($request->lastLetter) + 1);
+                $seccion->letra = $nextLetter;
+                $seccion->save();
+            }
+        }/*  else {
+            $seccion = new Seccion;
+            $seccion->nivel = $request->nivel;
+            $seccion->letra = 'A';
+            $seccion->save();
+        } */
+
+        return back();
+
+        /* $seccion = new Seccion;
         $seccion->nivel = $request->nivel;
         $nextLetter = chr(ord($request->lastLetter) + 1);
         $seccion->letra = $nextLetter;
         $seccion->save();
-        return back();
+        return back(); */
     }
 
     /**
